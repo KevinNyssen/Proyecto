@@ -1,9 +1,11 @@
 {% extends 'todo/layout.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container text-center">
     <div class="row">
-        <div class="col">
+        <!-- To Do Section -->
+        <div class="col to-do-section" data-gif="{% static 'images/to do.gif' %}" data-png="{% static 'images/td.png' %}">
             <h2>To Do</h2>
             <ul>
                 {% for task in todo_tasks %}
@@ -12,10 +14,11 @@
                     <a class="btn btn-secondary btn-sm" href="{% url 'eliminar' task.id %}">Eliminar</a>
                 {% endfor %}
             </ul>
+            <img class="footer-img" src="{% static 'images/td.png' %}" alt="To Do">
         </div>
 
         <!-- Doing Section -->
-        <div class="col">
+        <div class="col doing-section" data-gif="{% static 'images/doing.gif' %}" data-png="{% static 'images/ding.png' %}">
             <h2>Doing</h2>
             <ul>
                 {% for task in doing_tasks %}
@@ -24,10 +27,11 @@
                     <a class="btn btn-secondary btn-sm" href="{% url 'eliminar' task.id %}">Eliminar</a>
                 {% endfor %}
             </ul>
+            <img class="footer-img" src="{% static 'images/ding.png' %}" alt="Doing">
         </div>
 
         <!-- Done Section -->
-        <div class="col">
+        <div class="col done-section" data-gif="{% static 'images/done.gif' %}" data-png="{% static 'images/de.png' %}">
             <h2>Done</h2>
             <ul>
                 {% for task in done_tasks %}
@@ -36,7 +40,28 @@
                     <a class="btn btn-secondary btn-sm" href="{% url 'eliminar' task.id %}">Eliminar</a>
                 {% endfor %}
             </ul>
+            <img class="footer-img" src="{% static 'images/de.png' %}" alt="Done">
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll('.col');
+
+    sections.forEach(section => {
+        const img = section.querySelector('.footer-img');
+        const gif = section.getAttribute('data-gif');
+        const png = section.getAttribute('data-png');
+        
+        section.addEventListener('mouseover', () => {
+            img.src = gif;
+        });
+        
+        section.addEventListener('mouseout', () => {
+            img.src = png;
+        });
+    });
+});
+</script>
 {% endblock %}

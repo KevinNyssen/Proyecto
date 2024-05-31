@@ -1,0 +1,33 @@
+/* static/css/styles.css */
+
+/* Base container styles */
+.container {
+    margin-top: 20px;
+}
+
+/* Section headers */
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    margin-right: 5px;
+}
+
+/* Animation container styles */
+.footer-img {
+    width: 96px;  /* Thumbnail width */
+    height: 96px; /* Thumbnail height */
+}
